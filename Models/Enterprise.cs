@@ -184,19 +184,19 @@ public class Enterprise
 
     public static void CreateClient()
     {
-        Console.Write("Ingrese el nombre del Client: ");
+        Console.Write("Ingrese el nombre del client: ");
         string? Name3 = Console.ReadLine();
 
-        Console.Write("Ingrese el apellido del Empleado: ");
+        Console.Write("Ingrese el apellido del cliente ");
         string? LastName3 = Console.ReadLine();
 
         Console.Write("Ingrese la edad Empleado: ");
         byte Age3 = byte.Parse(Console.ReadLine());
 
-        Console.Write("Ingrese el cargo del Empleado: ");
+        Console.Write("Ingrese el correo del cliente: ");
         string? Email3 = Console.ReadLine();
 
-        Console.Write("Ingrese el salario del Empleado: ");
+        Console.Write("Ingrese el telefóno del cliente: ");
         string? PhoneNumber3 = Console.ReadLine();
 
         var NewClient = new Client(Name3, LastName3, Age3, Email3, PhoneNumber3);
@@ -233,7 +233,7 @@ public class Enterprise
                 Console.Write("Ingrese la edad del cliente: ");
                 byte newAge2 = byte.Parse(Console.ReadLine());
 
-                Console.Write("Ingrese el cargo del cliente: ");
+                Console.Write("Ingrese el Email del cliente: ");
                 string? newEmail = Console.ReadLine();
 
                 Console.Write("Ingrese el Telefóno del cliente: ");
