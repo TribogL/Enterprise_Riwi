@@ -16,4 +16,13 @@ public class Person
         LastName = lastName;
         Age = age;
     }
+
+    public void ShowInformation()
+    {
+        Console.WriteLine(@$"////////
+Nombre: {Name}
+Apellido: {LastName}
+Edad: {Age}
+\\\\\\\\\\\\\\\");
+    }
 }

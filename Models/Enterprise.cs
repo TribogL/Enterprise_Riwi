@@ -10,6 +10,7 @@ public class Enterprise
     public string EnterpriseName { get; set; }
     public string Address { get; set; }
     public static List<Employee> EmployeeList { get; set; } = new List<Employee> { };
+    public static List<Client> ClientList { get; set; } = new List<Client> { };
 
     public Enterprise(string enterpriseName, string address, List<Employee> employeeList)
     {
@@ -44,12 +45,15 @@ public class Enterprise
 
     }
     public static void ReadEmployees()
+
     {
         foreach (var Employee in EmployeeList)
         {
             Employee.ShowInformation();
         }
     }
+
+
     public static void UpdateEmployee()
     {
         Console.Write("Ingrese el Nombre del empleado que desea actualizar: ");
@@ -113,7 +117,9 @@ public class Enterprise
         }
     }
 
+
     public static void DeleteEmployee()
+
     {
         Console.Write("Ingrese el Nombre del emplado que desea eliminar del sistema: ");
         string? EmployeeForShearch3 = Console.ReadLine();
@@ -160,7 +166,6 @@ public class Enterprise
     }
 
 
-
     public static void ShowEmployeeByPosition()
     {
         Console.Write("Ingrese el cargo para ver la lista de empleados: ");
@@ -172,6 +177,193 @@ public class Enterprise
             foreach (var Employee in EmployeeList)
             {
                 Employee.ShowInformation();
+            }
+        }
+    }
+
+
+    public static void CreateClient()
+    {
+        Console.Write("Ingrese el nombre del Client: ");
+        string? Name3 = Console.ReadLine();
+
+        Console.Write("Ingrese el apellido del Empleado: ");
+        string? LastName3 = Console.ReadLine();
+
+        Console.Write("Ingrese la edad Empleado: ");
+        byte Age3 = byte.Parse(Console.ReadLine());
+
+        Console.Write("Ingrese el cargo del Empleado: ");
+        string? Email3 = Console.ReadLine();
+
+        Console.Write("Ingrese el salario del Empleado: ");
+        string? PhoneNumber3 = Console.ReadLine();
+
+        var NewClient = new Client(Name3, LastName3, Age3, Email3, PhoneNumber3);
+
+        ClientList.Add(NewClient);
+
+    }
+    public static void ReadClient()
+    {
+        foreach (var client in ClientList)
+        {
+            client.ShowInformation();
+        }
+    }
+    public static void UpdateClient()
+    {
+        Console.Write("Ingrese el Nombre del empleado que desea actualizar: ");
+        string? ClientForSearch = Console.ReadLine();
+        var ClientForFind = ClientList.Where(e => e.Name.Equals(ClientForSearch, StringComparison.OrdinalIgnoreCase)).ToList();
+
+        if (ClientForFind.Any())
+        {
+            var ClientToUpdate = ClientForFind.First();
+
+            bool update = true;
+            while (update)
+            {
+                Console.Write("Ingrese el nombre del cliente: ");
+                string? newName2 = Console.ReadLine();
+
+                Console.Write("Ingrese el apellido del cliente: ");
+                string? newLastName2 = Console.ReadLine();
+
+                Console.Write("Ingrese la edad del cliente: ");
+                byte newAge2 = byte.Parse(Console.ReadLine());
+
+                Console.Write("Ingrese el cargo del cliente: ");
+                string? newEmail = Console.ReadLine();
+
+                Console.Write("Ingrese el Telefóno del cliente: ");
+                string? newPhoneNumber = Console.ReadLine();
+
+                Console.WriteLine(@"¿Está seguro de los datos ingresados?
+1) Sí
+2) No");
+                int selection = int.Parse(Console.ReadLine());
+                if (selection == 1)
+                {
+                    ClientToUpdate.Name = newName2;
+                    ClientToUpdate.LastName = newLastName2;
+                    ClientToUpdate.Age = newAge2;
+                    ClientToUpdate.Email = newEmail;
+                    ClientToUpdate.PhoneNumber = newPhoneNumber;
+
+                    update = false;
+                    Console.WriteLine("Cliente actualizado con éxito.");
+                }
+                else if (selection == 2)
+                {
+                    Console.WriteLine("Intentelo nuevamente.");
+                }
+                else
+                {
+                    Console.WriteLine("Opción no válida.");
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("Cliente no encontrado.");
+        }
+    }
+
+    public static void DeleteClient()
+    {
+        Console.WriteLine(@"Como desesa buscar al cliente?
+1)Nombre.
+2)Apellido.");
+        int selection4 = int.Parse(Console.ReadLine());
+        if (selection4 == 1)
+        {
+            Console.Write("Ingrese el Nombre del cliente que desea eliminar del sistema: ");
+            string? ClientForSearch3 = Console.ReadLine();
+            var ClientForFind3 = ClientList.Where(Name => Name.Name.Equals(ClientForSearch3, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (ClientForFind3.Any())
+            {
+                bool Delete2 = true;
+                while (Delete2)
+                {
+                    foreach (var client in ClientForFind3)
+                    {
+                        client.ShowInformation();
+                    }
+                    Console.WriteLine(@"¿Está seguro de elimianr este cliente?
+1) Sí
+2) No");
+                    int selection5 = int.Parse(Console.ReadLine());
+                    if (selection5 == 1)
+                    {
+                        foreach (var client in ClientForFind3)
+                        {
+                            ClientList.Remove(client);
+                        }
+                        Console.WriteLine("Cliente elimando correctamente.");
+                        Delete2 = false;
+                    }
+                    else if (selection5 == 2)
+                    {
+                        Console.WriteLine("Saliento del menu de eliminado.");
+                        Delete2 = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Opción no válida intentelo nuevamente.");
+
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("cliente no encontrado.");
+            }
+        }
+        else if (selection4 == 2)
+        {
+            Console.Write("Ingrese el apellido del cliente que desea eliminar del sistema: ");
+            string? ClientForSearch4 = Console.ReadLine();
+            var ClientForFind4 = ClientList.Where(LastName => LastName.LastName.Equals(ClientForSearch4, StringComparison.OrdinalIgnoreCase)).ToList();
+
+            if (ClientForFind4.Any())
+            {
+                bool Delete3 = true;
+                while (Delete3)
+                {
+                    foreach (var client in ClientForFind4)
+                    {
+                        client.ShowInformation();
+                    }
+                    Console.WriteLine(@"¿Está seguro de elimianr este cliente?
+1) Sí
+2) No");
+                    int selection6 = int.Parse(Console.ReadLine());
+                    if (selection6 == 1)
+                    {
+                        foreach (var client in ClientForFind4)
+                        {
+                            ClientList.Remove(client);
+                        }
+                        Console.WriteLine("Cliente elimando correctamente.");
+                        Delete3 = false;
+                    }
+                    else if (selection6 == 2)
+                    {
+                        Console.WriteLine("Saliento del menu de eliminado.");
+                        Delete3 = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Opción no válida intentelo nuevamente.");
+
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("cliente no encontrado.");
             }
         }
     }
