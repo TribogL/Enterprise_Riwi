@@ -5,24 +5,20 @@ using System.Threading.Tasks;
 
 namespace Enterprise_Riwi.Models;
 
-public class Person
+public abstract class Person
 {
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public string LastName { get; set; }
-    public byte Age { get; set; }
-    public Person(string name, string lastName, byte age)
+    public int Age { get; set; }
+    public Person(string name, string lastName, int age)
     {
+        Id = Guid.NewGuid();
         Name = name;
         LastName = lastName;
         Age = age;
     }
 
-    public void ShowInformation()
-    {
-        Console.WriteLine(@$"////////
-Nombre: {Name}
-Apellido: {LastName}
-Edad: {Age}
-\\\\\\\\\\\\\\\");
-    }
+    public abstract void ShowInformation();
+
 }

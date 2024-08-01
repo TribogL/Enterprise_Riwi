@@ -9,13 +9,13 @@ public class Client : Person
 {
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
-    public Client(string name, string lastName, byte age, string email, string phoneNumber) : base(name, lastName, age)
+    public Client(string name, string lastName, int age, string email, string phoneNumber) : base(name, lastName, age)
     {
         Email = email;
         PhoneNumber = phoneNumber;
     }
 
-    public void ShowInformation()
+    public override void ShowInformation()
     {
         Console.WriteLine(@$"////////
 Nombre: {Name}

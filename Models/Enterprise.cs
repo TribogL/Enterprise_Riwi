@@ -31,7 +31,7 @@ public class Enterprise
         string? IdentificationNumber2 = Console.ReadLine();
 
         Console.Write("Ingrese la edad Empleado: ");
-        byte Age2 = byte.Parse(Console.ReadLine());
+        int Age2 = int.Parse(Console.ReadLine());
 
         Console.Write("Ingrese el cargo del Empleado: ");
         string? Position2 = Console.ReadLine();
@@ -77,7 +77,7 @@ public class Enterprise
                 string? newIdentificationNumber = Console.ReadLine();
 
                 Console.Write("Ingrese la edad del Empleado: ");
-                byte newAge = byte.Parse(Console.ReadLine());
+                int newAge = int.Parse(Console.ReadLine());
 
                 Console.Write("Ingrese el cargo del Empleado: ");
                 string? newPosition = Console.ReadLine();
@@ -121,49 +121,158 @@ public class Enterprise
     public static void DeleteEmployee()
 
     {
-        Console.Write("Ingrese el Nombre del emplado que desea eliminar del sistema: ");
-        string? EmployeeForShearch3 = Console.ReadLine();
-        var EmployeeforFind3 = EmployeeList.Where(Name => Name.Name.Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
-
-        if (EmployeeforFind3.Any())
+        bool delete5 = true;
+        while (delete5)
         {
-            bool Delete = true;
-            while (Delete)
+
+
+            Console.WriteLine(@"Como desesa buscar al Empleado?
+1)Nombre.
+2)Apellido.
+3)Numero de identificacion");
+            int selection4 = int.Parse(Console.ReadLine());
+            if (selection4 == 1)
             {
-                foreach (var Employee in EmployeeforFind3)
+                Console.Write("Ingrese el Nombre del emplado que desea eliminar del sistema: ");
+                string? EmployeeForShearch3 = Console.ReadLine();
+                var EmployeeforFind3 = EmployeeList.Where(Name => Name.Name.Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                if (EmployeeforFind3.Any())
                 {
-                    Employee.ShowInformation();
-                }
-                Console.WriteLine(@"¿Está seguro de elimianr este empleado
+                    bool Delete = true;
+                    while (Delete)
+                    {
+                        foreach (var Employee in EmployeeforFind3)
+                        {
+                            Employee.ShowInformation();
+                        }
+                        Console.WriteLine(@"¿Está seguro de elimianr este empleado
 1) Sí
 2) No");
-                int selection3 = int.Parse(Console.ReadLine());
-                if (selection3 == 1)
-                {
-                    foreach (var employee1 in EmployeeforFind3)
-                    {
-                        EmployeeList.Remove(employee1);
+                        int selection3 = int.Parse(Console.ReadLine());
+                        if (selection3 == 1)
+                        {
+                            foreach (var employee1 in EmployeeforFind3)
+                            {
+                                EmployeeList.Remove(employee1);
+                            }
+                            Console.WriteLine("Empleado elimando correctamente");
+                            Delete = false;
+                        }
+                        else if (selection3 == 2)
+                        {
+                            Console.WriteLine("Saliento del menu de eliminado.");
+                            Delete = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Opción no válida intentelo nuevamente.");
+
+                        }
                     }
-                    Console.WriteLine("Empleado elimando correctamente");
-                    Delete = false;
-                }
-                else if (selection3 == 2)
-                {
-                    Console.WriteLine("Saliento del menu de eliminado.");
-                    Delete = false;
                 }
                 else
                 {
-                    Console.WriteLine("Opción no válida intentelo nuevamente.");
-
+                    Console.WriteLine("Empleado no encontrado.");
                 }
             }
-        }
-        else
-        {
-            Console.WriteLine("Empleado no encontrado.");
+            else if (selection4 == 2)
+            {
+                Console.Write("Ingrese el apellido del empleado que desea eliminar del sistema: ");
+                string? EmployeeForShearch3 = Console.ReadLine();
+                var EmployeeforFind3 = ClientList.Where(LastName => LastName.LastName.Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                if (EmployeeforFind3.Any())
+                {
+                    bool Delete3 = true;
+                    while (Delete3)
+                    {
+                        foreach (var client in EmployeeforFind3)
+                        {
+                            client.ShowInformation();
+                        }
+                        Console.WriteLine(@"¿Está seguro de elimianr este cliente?
+1) Sí
+2) No");
+                        int selection6 = int.Parse(Console.ReadLine());
+                        if (selection6 == 1)
+                        {
+                            foreach (var client in EmployeeforFind3)
+                            {
+                                ClientList.Remove(client);
+                            }
+                            Console.WriteLine("Cliente elimando correctamente.");
+                            Delete3 = false;
+                        }
+                        else if (selection6 == 2)
+                        {
+                            Console.WriteLine("Saliento del menu de eliminado.");
+                            Delete3 = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Opción no válida intentelo nuevamente.");
+
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("cliente no encontrado.");
+                }
+            }
+            else if (selection4 == 3)
+            {
+                Console.Write("Ingrese el numero de identificacion del empleado que desea eliminar del sistema: ");
+                string? EmployeeForShearch3 = Console.ReadLine();
+                var EmployeeforFind3 = EmployeeList.Where(Idefication => Idefication.IdentificationNumber.Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
+
+                if (EmployeeforFind3.Any())
+                {
+                    bool Delete3 = true;
+                    while (Delete3)
+                    {
+                        foreach (var employee in EmployeeforFind3)
+                        {
+                            employee.ShowInformation();
+                        }
+                        Console.WriteLine(@"¿Está seguro de elimianr este cliente?
+1) Sí
+2) No");
+                        int selection6 = int.Parse(Console.ReadLine());
+                        if (selection6 == 1)
+                        {
+                            foreach (var employee in EmployeeforFind3)
+                            {
+                                EmployeeList.Remove(employee);
+                            }
+                            Console.WriteLine("Cliente elimando correctamente.");
+                            Delete3 = false;
+                        }
+                        else if (selection6 == 2)
+                        {
+                            Console.WriteLine("Saliento del menu de eliminado.");
+                            Delete3 = false;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Opción no válida intentelo nuevamente.");
+
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("cliente no encontrado.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Opcción no valida intentelo nuevamente.");
+            }
         }
     }
+
 
 
     public static void ShowEmployeeByPosition()
@@ -191,7 +300,7 @@ public class Enterprise
         string? LastName3 = Console.ReadLine();
 
         Console.Write("Ingrese la edad Empleado: ");
-        byte Age3 = byte.Parse(Console.ReadLine());
+        int Age3 = int.Parse(Console.ReadLine());
 
         Console.Write("Ingrese el correo del cliente: ");
         string? Email3 = Console.ReadLine();

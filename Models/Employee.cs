@@ -7,15 +7,15 @@ namespace Enterprise_Riwi.Models;
 
 public class Employee : Person
 {
-    public Guid Id { get; set; }
+    
     public string IdentificationNumber { get; set; }
     public string Position { get; set; }
     public double Salary { get; set; }
 
 
-    public Employee(string name, string lastName, string identificationNumber, byte age, string position, double salary): base (name,lastName,age)
+    public Employee(string name, string lastName, string identificationNumber, int age, string position, double salary): base (name,lastName,age)
     {
-        Id = Guid.NewGuid();
+        
         IdentificationNumber = identificationNumber;
         Position = position;
         Salary = salary;
@@ -26,7 +26,7 @@ public class Employee : Person
         return Bonification;
     }
 
-    public void ShowInformation()
+    public override void ShowInformation()
     {
         Console.WriteLine(@$"////////
 Nombre: {Name}
