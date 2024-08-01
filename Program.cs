@@ -5,11 +5,7 @@ bool Enterprise_Riwi = true;
 while (Enterprise_Riwi)
 {
     Console.Clear();
-    Console.WriteLine(@"///////////////Bienvenido a Enterprise Riwi\\\\\\\\\\\\\\\\\\\");
-    Console.WriteLine(@"Menu principal
-1)Menu de empleados
-2)Menu de clientes.
-3)salir.");
+    Enterprise.ShowTitle();
     int selection7 = int.Parse(Console.ReadLine());
     switch (selection7)
     {
@@ -63,7 +59,7 @@ while (Enterprise_Riwi)
                         int programExit2 = int.Parse(Console.ReadLine());
                         if (programExit2 == 1)
                         {
-                            Console.WriteLine(@"///////// Saliendo del menu \\\\\\\\\\");
+                            Enterprise.ShowFoot();
                             Continue();
                             menuForEmployees = false;
                         }
@@ -124,7 +120,7 @@ while (Enterprise_Riwi)
                     int programExit2 = int.Parse(Console.ReadLine());
                     if (programExit2 == 1)
                     {
-                        Console.WriteLine(@"///////// Saliendo del menu \\\\\\\\\\");
+                       Enterprise.ShowFoot();
                         Continue();
                         MenuForClients = false;
                     }

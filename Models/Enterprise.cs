@@ -476,4 +476,27 @@ public class Enterprise
             }
         }
     }
+
+
+
+    public static void ShowTitle()
+    {
+        Console.WriteLine(@"///////////////Bienvenido a Enterprise Riwi\\\\\\\\\\\\\\\\\\\");
+        Console.WriteLine(@"Menu principal
+1)Menu de empleados
+2)Menu de clientes.
+3)salir.");
+    }
+
+
+    public static void ShowFoot()
+    {
+         Console.WriteLine(@"///////// Saliendo del menu \\\\\\\\\\");
+    }
+
+
+    public static void ShowSpaces()
+    {
+            
+    }
 }
