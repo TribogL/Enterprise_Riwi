@@ -25,4 +25,12 @@ Correo: {Email}
 Telefóno: {PhoneNumber}
 \\\\\\\\\\\\\\\");
     }
+    public string GetNameClient()
+    {
+        return Name;
+    }
+    public string GetLastNameClient()
+    {
+        return LastName;
+    }
 }

@@ -19,30 +19,9 @@ public class Enterprise
         EmployeeList = employeeList;
     }
 
-    public static void CreateEmployee()
+    public static void CreateEmployee2()
     {
-        Console.Write("Ingrese el nombre del Empleado: ");
-        string? Name2 = Console.ReadLine();
-
-        Console.Write("Ingrese el apellido del Empleado: ");
-        string? LastName2 = Console.ReadLine();
-
-        Console.Write("Ingrese número de documento del Empleado: ");
-        string? IdentificationNumber2 = Console.ReadLine();
-
-        Console.Write("Ingrese la edad Empleado: ");
-        int Age2 = int.Parse(Console.ReadLine());
-
-        Console.Write("Ingrese el cargo del Empleado: ");
-        string? Position2 = Console.ReadLine();
-
-        Console.Write("Ingrese el salario del Empleado: ");
-        double Salary2 = double.Parse(Console.ReadLine());
-
-        var NewEMployee = new Employee(Name2, LastName2, IdentificationNumber2, Age2, Position2, Salary2);
-
-        EmployeeList.Add(NewEMployee);
-
+        EmployeeList.Add(Managger.CreateEmployee());
     }
     public static void ReadEmployees()
 
@@ -58,26 +37,21 @@ public class Enterprise
     {
         Console.Write("Ingrese el Nombre del empleado que desea actualizar: ");
         string? employeeForSearch = Console.ReadLine();
-        var employeeForFind = EmployeeList.Where(e => e.Name.Equals(employeeForSearch, StringComparison.OrdinalIgnoreCase)).ToList();
+        var employeeForFind = EmployeeList.Where(Name => Name.GetNameEmployee().Equals(employeeForSearch, StringComparison.OrdinalIgnoreCase)).ToList();
 
         if (employeeForFind.Any())
         {
             var employeeToUpdate = employeeForFind.First();
-
-            bool update = true;
-            while (update)
-            {
                 Console.Write("Ingrese el nombre del Empleado: ");
                 string? newName = Console.ReadLine();
+                Person.NewNameEmployee(newName);
 
                 Console.Write("Ingrese el apellido del Empleado: ");
                 string? newLastName = Console.ReadLine();
+                Person.NewLastNameEmployee(newLastName);
 
                 Console.Write("Ingrese el tipo de documento del Empleado: ");
                 string? newIdentificationNumber = Console.ReadLine();
-
-                Console.Write("Ingrese la edad del Empleado: ");
-                int newAge = int.Parse(Console.ReadLine());
 
                 Console.Write("Ingrese el cargo del Empleado: ");
                 string? newPosition = Console.ReadLine();
@@ -85,31 +59,9 @@ public class Enterprise
                 Console.Write("Ingrese el salario del Empleado: ");
                 double newSalary = double.Parse(Console.ReadLine());
 
-                Console.WriteLine(@"¿Está seguro de los datos ingresados?
-1) Sí
-2) No");
-                int selection = int.Parse(Console.ReadLine());
-                if (selection == 1)
-                {
-                    employeeToUpdate.Name = newName;
-                    employeeToUpdate.LastName = newLastName;
-                    employeeToUpdate.IdentificationNumber = newIdentificationNumber;
-                    employeeToUpdate.Age = newAge;
-                    employeeToUpdate.Position = newPosition;
-                    employeeToUpdate.Salary = newSalary;
-
-                    update = false;
-                    Console.WriteLine("Empleado actualizado con éxito.");
-                }
-                else if (selection == 2)
-                {
-                    Console.WriteLine("Intentelo nuevamente.");
-                }
-                else
-                {
-                    Console.WriteLine("Opción no válida.");
-                }
-            }
+                Console.WriteLine("Empleado actualizado con éxito.");
+                
+            
         }
         else
         {
@@ -135,7 +87,7 @@ public class Enterprise
             {
                 Console.Write("Ingrese el Nombre del emplado que desea eliminar del sistema: ");
                 string? EmployeeForShearch3 = Console.ReadLine();
-                var EmployeeforFind3 = EmployeeList.Where(Name => Name.Name.Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
+                var EmployeeforFind3 = EmployeeList.Where(Name => Name.GetNameEmployee().Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
 
                 if (EmployeeforFind3.Any())
                 {
@@ -180,7 +132,7 @@ public class Enterprise
             {
                 Console.Write("Ingrese el apellido del empleado que desea eliminar del sistema: ");
                 string? EmployeeForShearch3 = Console.ReadLine();
-                var EmployeeforFind3 = ClientList.Where(LastName => LastName.LastName.Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
+                var EmployeeforFind3 = EmployeeList.Where(LastName => LastName.GetLastNameEmployee().Equals(EmployeeForShearch3, StringComparison.OrdinalIgnoreCase)).ToList();
 
                 if (EmployeeforFind3.Any())
                 {
@@ -197,9 +149,9 @@ public class Enterprise
                         int selection6 = int.Parse(Console.ReadLine());
                         if (selection6 == 1)
                         {
-                            foreach (var client in EmployeeforFind3)
+                            foreach (var employee in EmployeeforFind3)
                             {
-                                ClientList.Remove(client);
+                                EmployeeList.Remove(employee);
                             }
                             Console.WriteLine("Cliente elimando correctamente.");
                             Delete3 = false;
@@ -291,28 +243,12 @@ public class Enterprise
     }
 
 
-    public static void CreateClient()
+    public static void CreateClient2()
     {
-        Console.Write("Ingrese el nombre del client: ");
-        string? Name3 = Console.ReadLine();
-
-        Console.Write("Ingrese el apellido del cliente ");
-        string? LastName3 = Console.ReadLine();
-
-        Console.Write("Ingrese la edad Empleado: ");
-        int Age3 = int.Parse(Console.ReadLine());
-
-        Console.Write("Ingrese el correo del cliente: ");
-        string? Email3 = Console.ReadLine();
-
-        Console.Write("Ingrese el telefóno del cliente: ");
-        string? PhoneNumber3 = Console.ReadLine();
-
-        var NewClient = new Client(Name3, LastName3, Age3, Email3, PhoneNumber3);
-
-        ClientList.Add(NewClient);
-
+        ClientList.Add(Managger.CreateClient());
     }
+
+
     public static void ReadClient()
     {
         foreach (var client in ClientList)
@@ -320,65 +256,6 @@ public class Enterprise
             client.ShowInformation();
         }
     }
-    public static void UpdateClient()
-    {
-        Console.Write("Ingrese el Nombre del empleado que desea actualizar: ");
-        string? ClientForSearch = Console.ReadLine();
-        var ClientForFind = ClientList.Where(e => e.Name.Equals(ClientForSearch, StringComparison.OrdinalIgnoreCase)).ToList();
-
-        if (ClientForFind.Any())
-        {
-            var ClientToUpdate = ClientForFind.First();
-
-            bool update = true;
-            while (update)
-            {
-                Console.Write("Ingrese el nombre del cliente: ");
-                string? newName2 = Console.ReadLine();
-
-                Console.Write("Ingrese el apellido del cliente: ");
-                string? newLastName2 = Console.ReadLine();
-
-                Console.Write("Ingrese la edad del cliente: ");
-                byte newAge2 = byte.Parse(Console.ReadLine());
-
-                Console.Write("Ingrese el Email del cliente: ");
-                string? newEmail = Console.ReadLine();
-
-                Console.Write("Ingrese el Telefóno del cliente: ");
-                string? newPhoneNumber = Console.ReadLine();
-
-                Console.WriteLine(@"¿Está seguro de los datos ingresados?
-1) Sí
-2) No");
-                int selection = int.Parse(Console.ReadLine());
-                if (selection == 1)
-                {
-                    ClientToUpdate.Name = newName2;
-                    ClientToUpdate.LastName = newLastName2;
-                    ClientToUpdate.Age = newAge2;
-                    ClientToUpdate.Email = newEmail;
-                    ClientToUpdate.PhoneNumber = newPhoneNumber;
-
-                    update = false;
-                    Console.WriteLine("Cliente actualizado con éxito.");
-                }
-                else if (selection == 2)
-                {
-                    Console.WriteLine("Intentelo nuevamente.");
-                }
-                else
-                {
-                    Console.WriteLine("Opción no válida.");
-                }
-            }
-        }
-        else
-        {
-            Console.WriteLine("Cliente no encontrado.");
-        }
-    }
-
     public static void DeleteClient()
     {
         Console.WriteLine(@"Como desesa buscar al cliente?
@@ -389,7 +266,7 @@ public class Enterprise
         {
             Console.Write("Ingrese el Nombre del cliente que desea eliminar del sistema: ");
             string? ClientForSearch3 = Console.ReadLine();
-            var ClientForFind3 = ClientList.Where(Name => Name.Name.Equals(ClientForSearch3, StringComparison.OrdinalIgnoreCase)).ToList();
+            var ClientForFind3 = ClientList.Where(Name => Name.GetNameClient().Equals(ClientForSearch3, StringComparison.OrdinalIgnoreCase)).ToList();
 
             if (ClientForFind3.Any())
             {
@@ -434,7 +311,7 @@ public class Enterprise
         {
             Console.Write("Ingrese el apellido del cliente que desea eliminar del sistema: ");
             string? ClientForSearch4 = Console.ReadLine();
-            var ClientForFind4 = ClientList.Where(LastName => LastName.LastName.Equals(ClientForSearch4, StringComparison.OrdinalIgnoreCase)).ToList();
+            var ClientForFind4 = ClientList.Where(LastName => LastName.GetLastNameClient().Equals(ClientForSearch4, StringComparison.OrdinalIgnoreCase)).ToList();
 
             if (ClientForFind4.Any())
             {
@@ -475,28 +352,5 @@ public class Enterprise
                 Console.WriteLine("cliente no encontrado.");
             }
         }
-    }
-
-
-
-    public static void ShowTitle()
-    {
-        Console.WriteLine(@"///////////////Bienvenido a Enterprise Riwi\\\\\\\\\\\\\\\\\\\");
-        Console.WriteLine(@"Menu principal
-1)Menu de empleados
-2)Menu de clientes.
-3)salir.");
-    }
-
-
-    public static void ShowFoot()
-    {
-         Console.WriteLine(@"///////// Saliendo del menu \\\\\\\\\\");
-    }
-
-
-    public static void ShowSpaces()
-    {
-            
     }
 }

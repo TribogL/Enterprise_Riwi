@@ -5,7 +5,7 @@ bool Enterprise_Riwi = true;
 while (Enterprise_Riwi)
 {
     Console.Clear();
-    Enterprise.ShowTitle();
+    Managger.ShowTitle();
     int selection7 = int.Parse(Console.ReadLine());
     switch (selection7)
     {
@@ -26,7 +26,7 @@ while (Enterprise_Riwi)
                 {
                     case 1:
                         Console.Clear();
-                        Enterprise.CreateEmployee();
+                        Enterprise.CreateEmployee2();
                         Continue();
                         break;
                     case 2:
@@ -59,7 +59,7 @@ while (Enterprise_Riwi)
                         int programExit2 = int.Parse(Console.ReadLine());
                         if (programExit2 == 1)
                         {
-                            Enterprise.ShowFoot();
+                            Managger.ShowFoot();
                             Continue();
                             menuForEmployees = false;
                         }
@@ -72,88 +72,82 @@ while (Enterprise_Riwi)
             }
             break;
 
-   
-    break;
+
+            break;
         case 2:
-        bool MenuForClients = true;
-        while (MenuForClients)
-        {
+            bool MenuForClients = true;
+            while (MenuForClients)
+            {
 
 
-            Console.Clear();
-            Console.WriteLine(@"Menu para clientes
+                Console.Clear();
+                Console.WriteLine(@"Menu para clientes
 1)Registrar un cliente.
 2)ver Lista de clientes.
-3)Actualizar información de un cliente.
-4)Eliminar un cliente del sistema.
-5)Salir al menu principal.");
-            int Selection8 = int.Parse(Console.ReadLine());
-            switch (Selection8)
-            {
-                case 1:
-                    Console.Clear();
-                    Enterprise.CreateClient();
-                    Continue();
-                    break;
-                case 2:
-                    Console.Clear();
-                    Enterprise.ReadClient();
-                    Continue();
-                    break;
-                case 3:
-                    Console.Clear();
-                    Enterprise.UpdateClient();
-                    Continue();
-                    break;
-                case 4:
-                    Console.Clear();
-                    Enterprise.DeleteClient();
-                    Continue();
-                    break;
-                case 5:
-                    Console.Clear();
-                    Console.WriteLine(@"/////////// Salida del menu de empleados \\\\\\\\\\\\");
-                    Console.WriteLine("¿Está seguro que desea salir del menu?");
-                    Console.WriteLine(@"
+3)Eliminar un cliente del sistema.
+4)Salir al menu principal.");
+                int Selection8 = int.Parse(Console.ReadLine());
+                switch (Selection8)
+                {
+                    case 1:
+                        Console.Clear();
+                        Enterprise.CreateClient2();
+                        Continue();
+                        break;
+                    case 2:
+                        Console.Clear();
+                        Enterprise.ReadClient();
+                        Continue();
+                        break;
+                    case 3:
+                        Console.Clear();
+                        Enterprise.DeleteClient();
+                        Continue();
+                        break;
+                    case 4:
+                        Console.Clear();
+                        Console.WriteLine(@"/////////// Salida del menu de empleados \\\\\\\\\\\\");
+                        Console.WriteLine("¿Está seguro que desea salir del menu?");
+                        Console.WriteLine(@"
 1)Sí
 2)No");
-                    int programExit2 = int.Parse(Console.ReadLine());
-                    if (programExit2 == 1)
-                    {
-                       Enterprise.ShowFoot();
-                        Continue();
-                        MenuForClients = false;
-                    }
-                    else
-                    {
-                        Continue();
-                    }
-                    break;
+                        int programExit2 = int.Parse(Console.ReadLine());
+                        if (programExit2 == 1)
+                        {
+                            Managger.ShowFoot();
+                            Continue();
+                            MenuForClients = false;
+                        }
+                        else
+                        {
+                            Continue();
+                        }
+                        break;
+                }
             }
-        }
-        break;
-    case 3:
-        Console.Clear();
-        Console.WriteLine(@"/////////// Salida del programa \\\\\\\\\\\\");
-        Console.WriteLine("¿Está seguro que desea salir del programa?");
-        Console.WriteLine(@"
+            break;
+        case 3:
+            Console.Clear();
+            Console.WriteLine(@"/////////// Salida del programa \\\\\\\\\\\\");
+            Console.WriteLine("¿Está seguro que desea salir del programa?");
+            Console.WriteLine(@"
 1)Sí
 2)No");
-        int programExit = int.Parse(Console.ReadLine());
-        if (programExit == 1)
-        {
-            Console.WriteLine(@"///////// vuelva pronto \\\\\\\\\\");
-            Enterprise_Riwi = false;
-        }
-        else
-        {
-            Continue();
-        }
-        break;
+            int programExit = int.Parse(Console.ReadLine());
+            if (programExit == 1)
+            {
+                Console.WriteLine(@"///////// vuelva pronto \\\\\\\\\\");
+                Enterprise_Riwi = false;
+            }
+            else
+            {
+                Continue();
+            }
+            break;
     }
 
 
- }
+}
 
 
 

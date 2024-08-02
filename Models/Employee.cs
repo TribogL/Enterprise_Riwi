@@ -7,15 +7,15 @@ namespace Enterprise_Riwi.Models;
 
 public class Employee : Person
 {
-    
+
     public string IdentificationNumber { get; set; }
     public string Position { get; set; }
     public double Salary { get; set; }
 
 
-    public Employee(string name, string lastName, string identificationNumber, int age, string position, double salary): base (name,lastName,age)
+    public Employee(string name, string lastName, string identificationNumber, int age, string position, double salary) : base(name, lastName, age)
     {
-        
+
         IdentificationNumber = identificationNumber;
         Position = position;
         Salary = salary;
@@ -34,9 +34,22 @@ Apellido: {LastName}
 Carné: {IdentificationNumber}
 Edad: {Age}
 Cargo: {Position}
-Salario: {Salary}
+Salario bruto: {Salary}
 bonificación: {BonificationFounder()}
+salario total: {Salary + BonificationFounder()}
 \\\\\\\\\\\\\\\");
     }
+
+    public string GetNameEmployee()
+    {
+        return Name;
+    }
+
+    public string GetLastNameEmployee()
+    {
+        return LastName;
+    }
+    
+
 
 }
